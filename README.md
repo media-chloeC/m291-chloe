@@ -1,5 +1,15 @@
-# m291-chloe
+# M291 — Chloe
+Je suis étudiant en médiamatique en 3èmem année.
 
-## historique de mes exercises dans l'ict 291
+## Ce que je veux apprendre
+- je voudrais apprendre a faire des sites funs.
 
-Voici mon deuxième répertoire pour mes exefrcises et projets lors de se semestre. Le répertoire à été créez le 18 aout 2027.
+## M291 · Fiche d’atelier · e1-1 — Mon repo
+- j'uttilise l'ia pour me débloquer.
+- J'aimerais faire un jeu.
+
+## Mon projet (idée en une phrase)
+Pas d'idée pour l'instant (18/08)
+
+## Comment me trouver
+- GitHub : Media-chloeC
