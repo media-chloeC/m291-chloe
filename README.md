@@ -18,3 +18,6 @@ Pas d'idée pour l'instant (18/08)
 
 ## Comment me trouver
 - GitHub : Media-chloeC
+
+_Repo cloné et ouvert dans VS Code._
+
