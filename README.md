@@ -11,5 +11,10 @@ Je suis étudiant en médiamatique en 3èmem année.
 ## Mon projet (idée en une phrase)
 Pas d'idée pour l'instant (18/08)
 
+## mes 3 sites préféres
+- pinterest (https://fr.pinterest.com)
+- youtube (https://www.youtube.com)
+- pixilart (https://www.pixilart.com)
+
 ## Comment me trouver
 - GitHub : Media-chloeC
