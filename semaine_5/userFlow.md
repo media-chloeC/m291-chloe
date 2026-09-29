@@ -20,4 +20,4 @@
 
 ## fin échec
 - creation du profil pas terminé
-- l'uttilisateur n'a pas trouvé de recettes à son gout
+- l'uttilisateur n'a pas trouvé de recettes à son goutOTH
