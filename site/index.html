@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accueil — Yumnote</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-page="accueil">
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <div class="app">
+    <header class="hd">
+      <h1 class="brand">Yumnote</h1>
+      <a class="ib" href="recherche.html" aria-label="Rechercher une recette"><span data-icon="search"></span></a>
+    </header>
+
+    <main id="contenu" class="mn">
+      <noscript><p class="vide">Yumnote a besoin de JavaScript pour afficher les recettes.</p></noscript>
+
+      <a class="hero" href="recherche.html?regime=vegetarien">
+        <span class="chip chip--sombre"><span data-icon="leaf"></span>Végé friendly</span>
+        <span class="hero__t">Toutes les recettes végétariennes</span>
+      </a>
+
+      <h2 class="section-titre">Recommandé pour toi</h2>
+      <p class="note" id="note"></p>
+      <ul class="grille" id="recommandations"></ul>
+    </main>
+
+    <nav class="nv" aria-label="Navigation principale">
+      <a href="profil.html"><span data-icon="user"></span>Profil</a>
+      <a href="index.html" aria-current="page"><span data-icon="home"></span>Accueil</a>
+      <a href="recherche.html?favoris=1" id="nav-carnet"><span data-icon="book"></span>Carnet</a>
+    </nav>
+  </div>
+</body>
+</html>

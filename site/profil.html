@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon profil — Yumnote</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-page="profil">
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <div class="app">
+    <header class="hd">
+      <p class="brand">Yumnote</p>
+    </header>
+
+    <main id="contenu" class="mn">
+      <noscript><p class="vide">Yumnote a besoin de JavaScript pour enregistrer ton profil.</p></noscript>
+
+      <h1>Mon profil</h1>
+      <p class="intro">Choisis tes régimes alimentaires : l’accueil te propose uniquement les recettes qui leur correspondent.</p>
+
+      <fieldset class="regimes">
+        <legend>Régimes alimentaires</legend>
+        <div id="choix"></div>
+      </fieldset>
+
+      <p class="statut" id="statut" role="status"></p>
+    </main>
+
+    <nav class="nv" aria-label="Navigation principale">
+      <a href="profil.html" aria-current="page"><span data-icon="user"></span>Profil</a>
+      <a href="index.html"><span data-icon="home"></span>Accueil</a>
+      <a href="recherche.html?favoris=1" id="nav-carnet"><span data-icon="book"></span>Carnet</a>
+    </nav>
+  </div>
+</body>
+</html>

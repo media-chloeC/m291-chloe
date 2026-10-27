@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recherche — Yumnote</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-page="recherche">
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <div class="app">
+    <main id="contenu" class="mn">
+      <h1 class="sr-only">Rechercher une recette</h1>
+      <noscript><p class="vide">Yumnote a besoin de JavaScript pour afficher les recettes.</p></noscript>
+
+      <form class="sf" role="search">
+        <span data-icon="search"></span>
+        <input id="q" type="search" placeholder="Rechercher" aria-label="Rechercher une recette" autocomplete="off">
+      </form>
+
+      <div class="filtres" id="filtres" role="group" aria-label="Filtrer les recettes"></div>
+
+      <p class="compte" id="compte" role="status" aria-live="polite"></p>
+      <ul class="liste" id="resultats"></ul>
+      <p class="vide" id="vide" hidden></p>
+    </main>
+
+    <nav class="nv" aria-label="Navigation principale">
+      <a href="profil.html"><span data-icon="user"></span>Profil</a>
+      <a href="index.html" aria-current="page"><span data-icon="home"></span>Accueil</a>
+      <a href="recherche.html?favoris=1" id="nav-carnet"><span data-icon="book"></span>Carnet</a>
+    </nav>
+  </div>
+</body>
+</html>
