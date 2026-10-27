@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mes favoris — Yumnote</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-page="favoris">
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <div class="app">
+    <header class="hd">
+      <h1 class="brand">Mes favoris</h1>
+    </header>
+
+    <main id="contenu" class="mn">
+      <noscript><p class="vide">Yumnote a besoin de JavaScript pour afficher tes favoris.</p></noscript>
+
+      <div class="titre-rangee"><h2>Recettes enregistrées</h2></div>
+      <ul class="liste" id="liste-favoris"></ul>
+      <p class="vide" id="vide-favoris" hidden>Aucun favori pour l’instant. Ouvre une recette et appuie sur le marque-page pour la garder ici.</p>
+
+      <div class="titre-rangee titre-rangee--haut">
+        <h2>Collections</h2>
+        <button class="btn-ligne" id="btn-nouvelle" type="button"><span data-icon="plus"></span>Nouvelle collection</button>
+      </div>
+      <div id="liste-collections"></div>
+      <p class="vide" id="vide-collections" hidden>Aucune collection. Crée-en une pour classer tes favoris, par exemple « Recettes d’automne ».</p>
+
+      <p class="sr-only" id="statut" role="status"></p>
+    </main>
+
+    <nav class="nv" aria-label="Navigation principale">
+      <a href="profil.html"><span data-icon="user"></span>Profil</a>
+      <a href="index.html"><span data-icon="home"></span>Accueil</a>
+      <a href="favoris.html" aria-current="page"><span data-icon="bookmark"></span>Favoris</a>
+    </nav>
+  </div>
+
+  <dialog id="dlg-ajout" aria-labelledby="dlg-ajout-t">
+    <h2 id="dlg-ajout-t">Ajouter à une collection</h2>
+    <p class="aide-dlg" id="dlg-ajout-recette"></p>
+    <div id="dlg-ajout-liste"></div>
+    <form id="dlg-ajout-form" class="champ">
+      <label for="dlg-ajout-nom">Nouvelle collection</label>
+      <input id="dlg-ajout-nom" type="text" maxlength="40" autocomplete="off">
+      <p class="erreur" id="dlg-ajout-erreur" role="alert"></p>
+      <button class="btn-ligne" type="submit"><span data-icon="plus"></span>Créer et ajouter</button>
+    </form>
+    <form method="dialog">
+      <button class="btn" type="submit">Terminé</button>
+    </form>
+  </dialog>
+
+  <dialog id="dlg-nouvelle" aria-labelledby="dlg-nouvelle-t">
+    <h2 id="dlg-nouvelle-t">Nouvelle collection</h2>
+    <form id="dlg-nouvelle-form" class="champ">
+      <label for="dlg-nouvelle-nom">Nom de la collection</label>
+      <input id="dlg-nouvelle-nom" type="text" maxlength="40" autocomplete="off">
+      <p class="erreur" id="dlg-nouvelle-erreur" role="alert"></p>
+      <button class="btn" type="submit">Créer</button>
+      <button class="btn-ligne" id="dlg-nouvelle-annuler" type="button">Annuler</button>
+    </form>
+  </dialog>
+</body>
+</html>

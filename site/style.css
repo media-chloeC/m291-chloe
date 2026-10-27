@@ -1,8 +1,5 @@
-/* ==========================================================
-   Mobile first (390 px) · variante 3 « gourmande & vibrante »
-   ========================================================== */
+  /* Mobile first */
 :root {
-  /* Palette */
   --ink: #111111;
   --g9: #04342C;
   --g8: #0B5240;
@@ -14,12 +11,11 @@
   --blanc: #FFFFFF;
   --nav-inactif: #C8EFE0;
 
-  /* Formes et tailles */
   --rayon-l: 20px;
   --rayon-m: 14px;
   --cible: 48px;
 
-  /* Focus visible : double anneau blanc + vert foncé */
+
   --focus: 0 0 0 3px #fff, 0 0 0 6px var(--g9);
 }
 

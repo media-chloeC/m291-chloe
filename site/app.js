@@ -1,12 +1,5 @@
 'use strict';
 
-/* ==========================================================
-   Yumnote — données et comportements (JavaScript natif)
-   Pages : accueil, recherche, recette, profil
-   ========================================================== */
-
-/* ---------- Données ---------- */
-
 const TAGS = {
   'vegetarien': { label: 'Végétarien', icone: 'leaf' },
   'sans-gluten': { label: 'Sans gluten', icone: 'wheat-off' }
