@@ -1,9 +1,6 @@
 /* ==========================================================
-   Yumnote — feuille de style
    Mobile first (390 px) · variante 3 « gourmande & vibrante »
-   Contrastes vérifiés WCAG 2.2 AA (voir Yumnote_var3_modifications_WCAG.md)
    ========================================================== */
-
 :root {
   /* Palette */
   --ink: #111111;
@@ -58,7 +55,6 @@ p { margin: 0; }
 ul,
 ol { margin: 0; padding: 0; }
 
-/* ---------- Utilitaires ---------- */
 
 .sr-only {
   position: absolute;
@@ -89,16 +85,13 @@ ol { margin: 0; padding: 0; }
   top: 8px;
 }
 
-/* ---------- Focus clavier ---------- */
 
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
-  outline: 3px solid transparent; /* visible en mode contraste élevé */
-  box-shadow: var(--focus);
+  outline: 3px solid transparent; 
 }
 
-/* ---------- Icônes ---------- */
 
 .ico {
   display: inline-flex;
@@ -125,7 +118,6 @@ input:focus-visible {
   fill: currentColor;
 }
 
-/* ---------- Structure de page ---------- */
 
 .app {
   display: flex;
@@ -178,7 +170,6 @@ input:focus-visible {
   padding: 16px;
 }
 
-/* ---------- Navigation du bas ---------- */
 
 .nv {
   position: sticky;
@@ -209,7 +200,6 @@ input:focus-visible {
   font-weight: 600;
 }
 
-/* ---------- Accueil ---------- */
 
 .hero {
   display: flex;
@@ -306,7 +296,6 @@ input:focus-visible {
 .ton-menthe .im,
 .ton-menthe .th { background: var(--g7); }
 
-/* ---------- Recherche ---------- */
 
 .sf {
   position: relative;
@@ -437,7 +426,6 @@ input:focus-visible {
   background: var(--m1);
 }
 
-/* ---------- Détail d'une recette ---------- */
 
 .detail-hero {
   position: relative;
@@ -527,7 +515,6 @@ input:focus-visible {
   text-decoration: none;
 }
 
-/* ---------- Profil ---------- */
 
 .intro {
   margin: 8px 0 20px;
@@ -571,7 +558,6 @@ input:focus-visible {
   font-size: 14px;
 }
 
-/* ---------- Mouvement réduit ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   * {
