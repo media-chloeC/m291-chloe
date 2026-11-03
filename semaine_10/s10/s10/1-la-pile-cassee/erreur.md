@@ -14,3 +14,8 @@ ligne 27 | False | false | les varialbes bool ne prenne pas de majuscule
 
 ## id 5
 ligne 29 | } | }, | les acolades de fin doivent avoir une virgule si il a plus de contenu
+
+ligne 33 | "pirx" | "prix" | faute de frappe
+
+## id 6
+ligne 41 | "false" | false | les bool ne prennent pas de guimmets ""

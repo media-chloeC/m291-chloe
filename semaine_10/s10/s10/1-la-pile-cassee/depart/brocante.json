@@ -30,7 +30,7 @@
 {
     "id": 5,
     "objet": "Vélo de course des années 80",
-    "pirx": 350,
+    "prix": 350,
     "vendu": false,
     "etat": "Bon"
   },
@@ -38,7 +38,7 @@
     "id": 6,
     "objet": "Paire de jumelles",
     "prix": 25,
-    "vendu": "false",
+    "vendu": false,
     "etat": "Comme neuf"
   }
 ]
