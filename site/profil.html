@@ -12,23 +12,44 @@
 
   <div class="app">
     <header class="hd">
-      <p class="brand">Yumnote</p>
+      <h1 class="brand">Mon profil</h1>
     </header>
 
     <main id="contenu" class="mn">
       <noscript><p class="vide">Yumnote a besoin de JavaScript pour enregistrer ton profil.</p></noscript>
 
-      <h1>Mon profil</h1>
-      <p class="intro">Choisis tes régimes alimentaires : l’accueil te propose uniquement les recettes qui leur correspondent.</p>
+      <div class="profil-haut">
+        <div class="avatar" id="avatar" role="img" aria-label="Icône de profil actuelle">
+          <span id="avatar-emoji" aria-hidden="true"></span>
+        </div>
+        <div class="champs">
+          <div class="champ">
+            <label for="pseudo">Pseudo</label>
+            <input id="pseudo" type="text" maxlength="30" autocomplete="nickname">
+          </div>
+          <div class="champ">
+            <label for="bio">Bio</label>
+            <textarea id="bio" maxlength="120" aria-describedby="bio-aide"></textarea>
+            <p class="aide" id="bio-aide">120 caractères maximum.</p>
+          </div>
+        </div>
+      </div>
 
-      <fieldset class="regimes">
-        <legend>Régimes alimentaires</legend>
-        <div id="choix"></div>
+      <fieldset class="fieldset-nu">
+        <legend>Choisis ton icône</legend>
+        <div class="icones" id="icones"></div>
       </fieldset>
 
-      <fieldset class="allergie">
-        <legend>Allergies</legend>
-        <div id="choix"></div>
+      <fieldset class="groupe groupe--menthe">
+        <legend>Allergies alimentaires</legend>
+        <p class="aide">Les recettes contenant ces ingrédients sont masquées.</p>
+        <div class="options" id="allergies"></div>
+      </fieldset>
+
+      <fieldset class="groupe groupe--corail">
+        <legend>Régimes alimentaires</legend>
+        <p class="aide">L’accueil te propose uniquement les recettes qui correspondent.</p>
+        <div class="options" id="regimes"></div>
       </fieldset>
 
       <p class="statut" id="statut" role="status"></p>
@@ -37,7 +58,7 @@
     <nav class="nv" aria-label="Navigation principale">
       <a href="profil.html" aria-current="page"><span data-icon="user"></span>Profil</a>
       <a href="index.html"><span data-icon="home"></span>Accueil</a>
-      <a href="favoris.html" id="nav-carnet"><span data-icon="book"></span>Carnet</a>
+      <a href="favoris.html"><span data-icon="bookmark"></span>Favoris</a>
     </nav>
   </div>
 </body>
