@@ -42,80 +42,69 @@
 
     },
     {
-        "id": 2,
-        "nom": "Tarte aux poireaux",
-        "icone": "🥧",
-        "tags": ["Végétarien"],
-        "temps": 45,
-        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
-        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
-        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+        "id": 5,
+        "nom": "Soupe de potiron",
+        "icone": "🎃",
+        "tags": ["Végétarien","sans-gluten"],
+        "temps": 40,
+        "description": "Une soupe veloutée et réconfortante pour les soirs d’automne.",
+        "ingredients": ["800 g de potiron", "1 pomme de terre", "1 oignon", "75 cl d’eau ou de bouillon", "10 cl de crème", "Sel et poivre"],
+        "etapes": ["Coupe le potiron, la pomme de terre et l’oignon en morceaux.", "Couvre d’eau ou de bouillon et cuis 25 minutes.", "Mixe, ajoute la crème, sale et poivre."]
 
     },
     {
-        "id": 2,
-        "nom": "Tarte aux poireaux",
-        "icone": "🥧",
-        "tags": ["Végétarien"],
-        "temps": 45,
-        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
-        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
-        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+        "id": 6,
+        "nom": "Gratin dauphinois",
+        "icone": "🥔",
+        "tags": ["Végétarien","sans-gluten"],
+        "temps": 60,
+        "description": "Des pommes de terre fondantes gratinées à la crème.",
+        "ingredients": ["1 kg de pommes de terre", "40 cl de crème", "20 cl de lait", "1 gousse d’ail", "Muscade, sel et poivre"],
+        "etapes": ["Préchauffe le four à 180 °C et frotte un plat à l’ail.", "Coupe les pommes de terre en fines rondelles.", "Dispose-les dans le plat et couvre avec le lait et la crème assaisonnés.", "Cuis 50 minutes jusqu’à ce que le dessus soit doré."]
 
     },
     {
-        "id": 2,
-        "nom": "Tarte aux poireaux",
-        "icone": "🥧",
-        "tags": ["Végétarien"],
-        "temps": 45,
-        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
-        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
-        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+        "id": 7,
+        "nom": "Salade d’automne aux noix",
+        "icone": "🥬",
+        "tags": ["Végétarien","sans-gluten"],
+        "temps": 15,
+        "description": "Mâche, poire et noix croquantes, avec du chèvre frais.",
+        "ingredients": ["150 g de mâche", "1 poire", "60 g de noix", "80 g de chèvre frais", "2 c. à soupe d’huile de noix", "1 c. à soupe de vinaigre de cidre"],
+        "etapes": ["Lave la mâche et coupe la poire en lamelles.", "Concasse grossièrement les noix.", "Mélange le tout avec le chèvre émietté, l’huile et le vinaigre."]
 
     },
     {
-        "id": 2,
-        "nom": "Tarte aux poireaux",
-        "icone": "🥧",
-        "tags": ["Végétarien"],
-        "temps": 45,
-        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
-        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
-        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+        "id": 8,
+        "nom": "Wok de légumes sauce cacahuète",
+        "icone": "🥜",
+        "tags": ["Végétarien","sans-gluten"],
+        "temps": 20,
+        "description": "Des légumes croquants et des nouilles de riz dans une sauce onctueuse.",
+        "ingredients": ["300 g de légumes pour wok", "200 g de nouilles de riz", "3 c. à soupe de beurre de cacahuète", "2 c. à soupe de tamari (vérifie l’étiquette)", "1 gousse d’ail", "1 morceau de gingembre"],
+        "etapes": ["Cuis les nouilles selon les indications du paquet.", "Saisis les légumes au wok avec l’ail et le gingembre.", "Délaye le beurre de cacahuète avec le tamari et un peu d’eau chaude.", "Mélange nouilles, légumes et sauce."]
 
     },
     {
-        "id": 2,
-        "nom": "Tarte aux poireaux",
-        "icone": "🥧",
-        "tags": ["Végétarien"],
-        "temps": 45,
-        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
-        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
-        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+        "id": 9,
+        "nom": "Poulet rôti au citron",
+        "icone": "🍗",
+        "tags": ["sans-gluten"],
+        "temps": 55,
+        "description": "Des cuisses de poulet dorées, parfumées au citron et au thym.",
+        "ingredients": ["4 cuisses de poulet", "2 citrons", "4 gousses d’ail", "Quelques brins de thym", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
+        "etapes": ["Préchauffe le four à 200 °C.", "Dispose le poulet dans un plat avec l’ail, le thym et les citrons coupés.", "Arrose d’huile, sale, poivre et enfourne 45 minutes."]
 
     },
     {
-        "id": 2,
-        "nom": "Tarte aux poireaux",
-        "icone": "🥧",
-        "tags": ["Végétarien"],
+        "id": 10,
+        "nom": "Saumon en papillote",
+        "icone": "🐟",
+        "tags": ["sans-gluten"],
         "temps": 45,
-        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
-        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
-        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
-
-    },
-    {
-        "id": 2,
-        "nom": "Tarte aux poireaux",
-        "icone": "🥧",
-        "tags": ["Végétarien"],
-        "temps": 45,
-        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
-        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
-        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+        "description": "Un saumon tendre cuit à la vapeur avec des légumes et de l’aneth.",
+        "ingredients": ["2 pavés de saumon", "1 courgette", "1 citron", "Un peu d’aneth", "1 c. à soupe d’huile d’olive", "Sel et poivre"],
+        "etapes": ["Préchauffe le four à 190 °C.", "Place chaque pavé sur une feuille de papier cuisson avec des rondelles de courgette.", "Ajoute citron, aneth, huile, sel et poivre, puis ferme les papillotes.", "Cuis 15 minutes."]
 
     }
 ]
