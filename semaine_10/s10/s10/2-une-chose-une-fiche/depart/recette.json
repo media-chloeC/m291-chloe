@@ -1,0 +1,18 @@
+[
+  {
+   "id": 1,
+   "nom": "Taboulé",
+   "personnes": 4,
+   "temps": 20,
+   "Végétarien": true,
+    "difficulté": "facile"
+  },
+  {
+    "id": 2,
+    "nom": "Gratin de pâtes au jambon",
+   "personnes": 6,
+   "temps": 45,
+    "Végétarien": false,
+    "difficulté": "moyen"
+  }
+]
