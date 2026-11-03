@@ -16,8 +16,8 @@
         "tags": ["Végétarien"],
         "temps": 45,
         "description": "Une tarte salée fondante, parfaite pour un repas simple.",
-        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
-        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+        "ingredients": ["1 pâte brisée", "4 poireaux", "20 cl de crème", "3 œufs", "100 g de fromage râpé", "Sel, poivre et muscade"],
+        "etapes": ["Préchauffe le four à 200 °C et garnis un moule avec la pâte.", "Émince les poireaux et fais-les fondre 10 minutes à la poêle.", "Mélange les œufs, la crème, le fromage et les épices.", "Répartis les poireaux sur la pâte, verse l’appareil et cuis 30 minutes."]
     },
     {
         "id": 3,

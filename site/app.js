@@ -45,108 +45,22 @@ const AVATARS = [
   { id: 'citron', nom: 'Citron', emoji: '🍋', fond: '#E1F5EE' }
 ];
 
-const RECETTES = [
-  {
-    id: 'risotto-champignons',
-    titre: 'Risotto aux champignons',
-    emoji: '🍄',
-    tags: ['vegetarien'],
-    temps: 30,
-    description: 'Un risotto crémeux aux champignons de saison, prêt en 30 minutes.',
-    ingredients: ['300 g de riz arborio', '300 g de champignons de Paris', '1 oignon', '1 l de bouillon de légumes chaud', '10 cl de vin blanc', '40 g de fromage râpé', '2 c. à soupe d’huile d’olive', 'Sel et poivre'],
-    etapes: ['Fais revenir l’oignon émincé dans l’huile d’olive.', 'Ajoute les champignons en lamelles et cuis 5 minutes.', 'Verse le riz, remue 1 minute, puis déglace au vin blanc.', 'Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.', 'Hors du feu, incorpore le fromage, sale et poivre.']
-  },
-  {
-    id: 'tarte-poireaux',
-    titre: 'Tarte aux poireaux',
-    emoji: '🥧',
-    tags: ['vegetarien'],
-    temps: 45,
-    description: 'Une tarte salée fondante, parfaite pour un repas simple.',
-    ingredients: ['1 pâte brisée', '4 poireaux', '20 cl de crème', '3 œufs', '100 g de fromage râpé', 'Sel, poivre et muscade'],
-    etapes: ['Préchauffe le four à 200 °C et garnis un moule avec la pâte.', 'Émince les poireaux et fais-les fondre 10 minutes à la poêle.', 'Mélange les œufs, la crème, le fromage et les épices.', 'Répartis les poireaux sur la pâte, verse l’appareil et cuis 30 minutes.']
-  },
-  {
-    id: 'curry-veggie',
-    titre: 'Curry veggie',
-    emoji: '🍛',
-    tags: ['vegetarien', 'sans-gluten'],
-    temps: 35,
-    description: 'Un curry de légumes au lait de coco, servi avec du riz basmati.',
-    ingredients: ['1 petit chou-fleur', '1 patate douce', '400 ml de lait de coco', '2 c. à soupe de pâte de curry (vérifie l’étiquette)', '200 g de riz basmati', '1 oignon'],
-    etapes: ['Coupe le chou-fleur et la patate douce en morceaux.', 'Fais revenir l’oignon, ajoute la pâte de curry puis les légumes.', 'Verse le lait de coco et laisse mijoter 20 minutes.', 'Cuis le riz et sers-le avec le curry.']
-  },
-  {
-    id: 'salade-quinoa',
-    titre: 'Salade de quinoa',
-    emoji: '🥗',
-    tags: ['vegetarien', 'sans-gluten'],
-    temps: 15,
-    description: 'Une salade fraîche et rassasiante, prête en un quart d’heure.',
-    ingredients: ['200 g de quinoa', '1 concombre', '2 tomates', '1 avocat', '1 citron', '3 c. à soupe d’huile d’olive', 'Quelques feuilles de menthe'],
-    etapes: ['Cuis le quinoa 12 minutes dans l’eau bouillante, puis égoutte-le.', 'Coupe le concombre, les tomates et l’avocat en dés.', 'Mélange le tout avec le jus de citron, l’huile et la menthe.']
-  },
-  {
-    id: 'soupe-potiron',
-    titre: 'Soupe de potiron',
-    emoji: '🎃',
-    tags: ['vegetarien', 'sans-gluten'],
-    temps: 40,
-    description: 'Une soupe veloutée et réconfortante pour les soirs d’automne.',
-    ingredients: ['800 g de potiron', '1 pomme de terre', '1 oignon', '75 cl d’eau ou de bouillon', '10 cl de crème', 'Sel et poivre'],
-    etapes: ['Coupe le potiron, la pomme de terre et l’oignon en morceaux.', 'Couvre d’eau ou de bouillon et cuis 25 minutes.', 'Mixe, ajoute la crème, sale et poivre.']
-  },
-  {
-    id: 'gratin-dauphinois',
-    titre: 'Gratin dauphinois',
-    emoji: '🥔',
-    tags: ['vegetarien', 'sans-gluten'],
-    temps: 60,
-    description: 'Des pommes de terre fondantes gratinées à la crème.',
-    ingredients: ['1 kg de pommes de terre', '40 cl de crème', '20 cl de lait', '1 gousse d’ail', 'Muscade, sel et poivre'],
-    etapes: ['Préchauffe le four à 180 °C et frotte un plat à l’ail.', 'Coupe les pommes de terre en fines rondelles.', 'Dispose-les dans le plat et couvre avec le lait et la crème assaisonnés.', 'Cuis 50 minutes jusqu’à ce que le dessus soit doré.']
-  },
-  {
-    id: 'salade-automne-noix',
-    titre: 'Salade d’automne aux noix',
-    emoji: '🥬',
-    tags: ['vegetarien', 'sans-gluten'],
-    temps: 15,
-    description: 'Mâche, poire et noix croquantes, avec du chèvre frais.',
-    ingredients: ['150 g de mâche', '1 poire', '60 g de noix', '80 g de chèvre frais', '2 c. à soupe d’huile de noix', '1 c. à soupe de vinaigre de cidre'],
-    etapes: ['Lave la mâche et coupe la poire en lamelles.', 'Concasse grossièrement les noix.', 'Mélange le tout avec le chèvre émietté, l’huile et le vinaigre.']
-  },
-  {
-    id: 'wok-cacahuete',
-    titre: 'Wok de légumes sauce cacahuète',
-    emoji: '🥜',
-    tags: ['vegetarien', 'sans-gluten'],
-    temps: 20,
-    description: 'Des légumes croquants et des nouilles de riz dans une sauce onctueuse.',
-    ingredients: ['300 g de légumes pour wok', '200 g de nouilles de riz', '3 c. à soupe de beurre de cacahuète', '2 c. à soupe de tamari (vérifie l’étiquette)', '1 gousse d’ail', '1 morceau de gingembre'],
-    etapes: ['Cuis les nouilles selon les indications du paquet.', 'Saisis les légumes au wok avec l’ail et le gingembre.', 'Délaye le beurre de cacahuète avec le tamari et un peu d’eau chaude.', 'Mélange nouilles, légumes et sauce.']
-  },
-  {
-    id: 'poulet-citron',
-    titre: 'Poulet rôti au citron',
-    emoji: '🍗',
-    tags: ['sans-gluten'],
-    temps: 55,
-    description: 'Des cuisses de poulet dorées, parfumées au citron et au thym.',
-    ingredients: ['4 cuisses de poulet', '2 citrons', '4 gousses d’ail', 'Quelques brins de thym', '2 c. à soupe d’huile d’olive', 'Sel et poivre'],
-    etapes: ['Préchauffe le four à 200 °C.', 'Dispose le poulet dans un plat avec l’ail, le thym et les citrons coupés.', 'Arrose d’huile, sale, poivre et enfourne 45 minutes.']
-  },
-  {
-    id: 'saumon-papillote',
-    titre: 'Saumon en papillote',
-    emoji: '🐟',
-    tags: ['sans-gluten'],
-    temps: 25,
-    description: 'Un saumon tendre cuit à la vapeur avec des légumes et de l’aneth.',
-    ingredients: ['2 pavés de saumon', '1 courgette', '1 citron', 'Un peu d’aneth', '1 c. à soupe d’huile d’olive', 'Sel et poivre'],
-    etapes: ['Préchauffe le four à 190 °C.', 'Place chaque pavé sur une feuille de papier cuisson avec des rondelles de courgette.', 'Ajoute citron, aneth, huile, sel et poivre, puis ferme les papillotes.', 'Cuis 15 minutes.']
-  }
-];
+/* Les recettes sont chargées depuis recette.json (voir chargerRecettes plus bas). */
+let RECETTES = [];
+
+/* Anciens identifiants (texte) → identifiants de recette.json, pour conserver les favoris déjà enregistrés */
+const ANCIENS_IDS = {
+  'risotto-champignons': '1',
+  'tarte-poireaux': '2',
+  'curry-veggie': '3',
+  'salade-quinoa': '4',
+  'soupe-potiron': '5',
+  'gratin-dauphinois': '6',
+  'salade-automne-noix': '7',
+  'wok-cacahuete': '8',
+  'poulet-citron': '9',
+  'saumon-papillote': '10'
+};
 
 const ICONES = {
   'search': '<circle cx="11" cy="11" r="7"/><path d="m20 20-4.5-4.5"/>',
@@ -221,7 +135,7 @@ function pluriel(n, mot) {
 }
 
 function recetteParId(id) {
-  return RECETTES.find(r => r.id === id);
+  return RECETTES.find(r => r.id === String(id));
 }
 
 /* Allergènes repérés dans la liste d'ingrédients */
@@ -233,8 +147,6 @@ function allergenesDe(recette) {
     return a.mots.some(m => new RegExp('\\b' + m + 's?\\b').test(texte));
   });
 }
-
-RECETTES.forEach(r => { r.allergenes = allergenesDe(r); });
 
 /* Profil */
 const PROFIL_DEFAUT = { avatar: 'avocat', pseudo: '', bio: '', regimes: [], allergies: [] };
@@ -281,6 +193,55 @@ function creerCollection(nom, recettes) {
   };
   ecrireCollections(lireCollections().concat(collection));
   return collection;
+}
+
+/* Chargement des recettes depuis recette.json */
+function slugTag(tag) {
+  return normaliser(String(tag)).trim().replace(/\s+/g, '-');
+}
+
+/* Adapte une recette de recette.json au format utilisé par le site :
+   id → id (en texte), nom → titre, icone → emoji, tags → identifiants internes */
+function depuisJson(r) {
+  return {
+    id: String(r.id),
+    titre: r.nom,
+    emoji: r.icone,
+    tags: (r.tags || []).map(slugTag).filter(t => TAGS[t]),
+    temps: r.temps,
+    description: r.description || '',
+    ingredients: r.ingredients || [],
+    etapes: r.etapes || []
+  };
+}
+
+async function chargerRecettes() {
+  const reponse = await fetch('recette.json');
+  if (!reponse.ok) throw new Error('HTTP ' + reponse.status);
+  const donnees = await reponse.json();
+  RECETTES = donnees
+    .filter(r => r.id !== undefined && r.nom)
+    .map(depuisJson);
+  RECETTES.forEach(r => { r.allergenes = allergenesDe(r); });
+}
+
+function migrerAnciensIds() {
+  const convertir = id => ANCIENS_IDS[id] || id;
+  const favoris = STORE.lire('favoris', []);
+  if (favoris.some(id => ANCIENS_IDS[id])) {
+    STORE.ecrire('favoris', favoris.map(convertir));
+  }
+  const collections = lireCollections();
+  if (collections.some(c => c.recettes.some(id => ANCIENS_IDS[id]))) {
+    ecrireCollections(collections.map(c => Object.assign({}, c, { recettes: c.recettes.map(convertir) })));
+  }
+}
+
+function afficherErreurChargement() {
+  const zone = document.getElementById('contenu');
+  const message = el('p', 'vide', 'Impossible de charger les recettes (recette.json). Ouvre le site avec un serveur local plutôt qu’en double-cliquant sur le fichier HTML.');
+  message.setAttribute('role', 'alert');
+  zone.prepend(message);
 }
 
 /* Éléments d'interface réutilisés */
@@ -837,8 +798,22 @@ function initProfil() {
 
 /* ---------- Démarrage ---------- */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   injecterIcones();
+  const page = document.body.dataset.page;
+
+  /* La page Profil n'a pas besoin des recettes : elle fonctionne même si le chargement échoue. */
+  let pret = true;
+  if (page !== 'profil') {
+    try {
+      await chargerRecettes();
+      migrerAnciensIds();
+    } catch (e) {
+      pret = false;
+      afficherErreurChargement();
+    }
+  }
+
   const pages = {
     accueil: initAccueil,
     recherche: initRecherche,
@@ -846,7 +821,7 @@ document.addEventListener('DOMContentLoaded', () => {
     favoris: initFavoris,
     profil: initProfil
   };
-  const init = pages[document.body.dataset.page];
-  if (init) init();
+  const init = pages[page];
+  if (pret && init) init();
   retourDepuisHistorique();
 });
