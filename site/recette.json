@@ -1,0 +1,121 @@
+[
+    {
+        "id": 1,
+        "nom": "Risotto aux champignons",
+        "icone": "🍄",
+        "tags": ["Végétarien"],
+        "temps": 30,
+        "description": "Un risotto crémeux aux champignons de saison, prêt en 30 minutes.",
+        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
+        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+    },
+    {
+        "id": 2,
+        "nom": "Tarte aux poireaux",
+        "icone": "🥧",
+        "tags": ["Végétarien"],
+        "temps": 45,
+        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
+        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
+        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+    },
+    {
+        "id": 3,
+        "nom": "Curry veggie",
+        "icone": "🍛",
+        "tags": ["Végétarien","sans-gluten"],
+        "temps": 35,
+        "description": "Un curry de légumes au lait de coco, servi avec du riz basmati.",
+        "ingredients": ["1 petit chou-fleur", "1 patate douce", "400 ml de lait de coco", "2 c. à soupe de pâte de curry (vérifie l’étiquette)", "200 g de riz basmati", "1 oignon"],
+        "etapes": ["Coupe le chou-fleur et la patate douce en morceaux.", "Fais revenir l’oignon, ajoute la pâte de curry puis les légumes.", "Verse le lait de coco et laisse mijoter 20 minutes.", "Cuis le riz et sers-le avec le curry."]
+
+    },
+    {
+        "id": 4,
+        "nom": "Salade de quinoa",
+        "icone": "🥗",
+        "tags": ["Végétarien","sans-gluten"],
+        "temps": 15,
+        "description": "Une salade fraîche et rassasiante, prête en un quart d’heure.",
+        "ingredients": ["200 g de quinoa", "1 concombre", "2 tomates", "1 avocat", "1 citron", "3 c. à soupe d’huile d’olive", "Quelques feuilles de menthe"],
+        "etapes": ["Cuis le quinoa 12 minutes dans l’eau bouillante, puis égoutte-le.", "Coupe le concombre, les tomates et l’avocat en dés.", "Mélange le tout avec le jus de citron, l’huile et la menthe."]
+
+    },
+    {
+        "id": 2,
+        "nom": "Tarte aux poireaux",
+        "icone": "🥧",
+        "tags": ["Végétarien"],
+        "temps": 45,
+        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
+        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
+        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+
+    },
+    {
+        "id": 2,
+        "nom": "Tarte aux poireaux",
+        "icone": "🥧",
+        "tags": ["Végétarien"],
+        "temps": 45,
+        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
+        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
+        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+
+    },
+    {
+        "id": 2,
+        "nom": "Tarte aux poireaux",
+        "icone": "🥧",
+        "tags": ["Végétarien"],
+        "temps": 45,
+        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
+        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
+        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+
+    },
+    {
+        "id": 2,
+        "nom": "Tarte aux poireaux",
+        "icone": "🥧",
+        "tags": ["Végétarien"],
+        "temps": 45,
+        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
+        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
+        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+
+    },
+    {
+        "id": 2,
+        "nom": "Tarte aux poireaux",
+        "icone": "🥧",
+        "tags": ["Végétarien"],
+        "temps": 45,
+        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
+        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
+        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+
+    },
+    {
+        "id": 2,
+        "nom": "Tarte aux poireaux",
+        "icone": "🥧",
+        "tags": ["Végétarien"],
+        "temps": 45,
+        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
+        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
+        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+
+    },
+    {
+        "id": 2,
+        "nom": "Tarte aux poireaux",
+        "icone": "🥧",
+        "tags": ["Végétarien"],
+        "temps": 45,
+        "description": "Une tarte salée fondante, parfaite pour un repas simple.",
+        "ingredients": ["300 g de riz arborio", "300 g de champignons de Paris", "1 oignon", "1 l de bouillon de légumes chaud", "10 cl de vin blanc", "40 g de fromage râpé", "2 c. à soupe d’huile d’olive", "Sel et poivre"],
+        "etapes": ["Fais revenir l’oignon émincé dans l’huile d’olive.", "Ajoute les champignons en lamelles et cuis 5 minutes.", "Verse le riz, remue 1 minute, puis déglace au vin blanc.", "Ajoute le bouillon louche par louche en remuant, pendant environ 18 minutes.", "Hors du feu, incorpore le fromage, sale et poivre."]
+
+    }
+]
