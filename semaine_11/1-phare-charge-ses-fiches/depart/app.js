@@ -41,11 +41,14 @@ function afficherLieux(liste) {
 }
 
 // ----- Votre code de la semaine 11 commence ici -----
+zoneEtat.textContent = "Chargement des lieux…";
+
 fetch("data.json")
   .then(function (reponse) {
     return reponse.json();
   })
   .then(function (donnees) {
+    zoneEtat.textContent = "";
     tousLesLieux = donnees;
     afficherLieux(tousLesLieux);
   });
