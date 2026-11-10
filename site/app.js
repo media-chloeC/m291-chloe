@@ -38,11 +38,11 @@ const ALLERGENES = {
 };
 
 const AVATARS = [
-  { id: 'carotte', nom: 'Carotte', emoji: '🥕', fond: '#F0997B' },
-  { id: 'poele', nom: 'Poêle', emoji: '🍳', fond: '#9FE1CB' },
-  { id: 'avocat', nom: 'Avocat', emoji: '🥑', fond: '#0F6E56' },
-  { id: 'piment', nom: 'Piment', emoji: '🌶️', fond: '#B8421C' },
-  { id: 'citron', nom: 'Citron', emoji: '🍋', fond: '#E1F5EE' }
+  { id: 'carotte', nom: 'Carotte', emoji: '🥕', fond: 'var(--c3)' },
+  { id: 'poele', nom: 'Poêle', emoji: '🍳', fond: 'var(--m3)' },
+  { id: 'avocat', nom: 'Avocat', emoji: '🥑', fond: 'var(--g7)' },
+  { id: 'piment', nom: 'Piment', emoji: '🌶️', fond: 'var(--c7)' },
+  { id: 'citron', nom: 'Citron', emoji: '🍋', fond: 'var(--m1)' }
 ];
 
 /* Les recettes sont chargées depuis recette.json (voir chargerRecettes plus bas). */
@@ -193,6 +193,62 @@ function creerCollection(nom, recettes) {
   };
   ecrireCollections(lireCollections().concat(collection));
   return collection;
+}
+
+/* ---------- Thèmes de couleurs (theme.json) ---------- */
+
+/* Contenu de theme.json une fois chargé : { defaut, variables, themes: [...] } */
+let THEMES = null;
+
+/* Pose les couleurs d'un thème sur la page : chaque clé de theme.json est reliée
+   à une variable CSS grâce à l'objet « variables » du même fichier. */
+function appliquerCouleurs(variables, couleurs) {
+  const racine = document.documentElement;
+  Object.keys(variables).forEach(cle => {
+    if (couleurs[cle]) racine.style.setProperty(variables[cle], couleurs[cle]);
+  });
+
+  /* Couleur de la barre du navigateur sur mobile */
+  if (couleurs['principal']) {
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'theme-color';
+      document.head.append(meta);
+    }
+    meta.content = couleurs['principal'];
+  }
+}
+
+/* Applique tout de suite le dernier thème utilisé, avant le chargement de theme.json,
+   pour éviter un éclair aux couleurs par défaut. */
+function appliquerThemeEnCache() {
+  const cache = STORE.lire('themeCache', null);
+  if (cache && cache.variables && cache.couleurs) {
+    appliquerCouleurs(cache.variables, cache.couleurs);
+  }
+}
+
+async function chargerThemes() {
+  const reponse = await fetch('theme.json');
+  if (!reponse.ok) throw new Error('HTTP ' + reponse.status);
+  const donnees = await reponse.json();
+  if (!donnees || !donnees.variables || !Array.isArray(donnees.themes) || !donnees.themes.length) {
+    throw new Error('theme.json invalide');
+  }
+  THEMES = donnees;
+}
+
+function themeChoisi() {
+  const id = STORE.lire('theme', null);
+  return THEMES.themes.find(t => t.id === id)
+    || THEMES.themes.find(t => t.id === THEMES.defaut)
+    || THEMES.themes[0];
+}
+
+function appliquerTheme(theme) {
+  appliquerCouleurs(THEMES.variables, theme.couleurs);
+  STORE.ecrire('themeCache', { variables: THEMES.variables, couleurs: theme.couleurs });
 }
 
 /* Chargement des recettes depuis recette.json */
@@ -792,15 +848,62 @@ function initProfil() {
     });
   }
 
+  /* Thème de couleurs */
+  const zoneThemes = document.getElementById('themes');
+  if (!THEMES) {
+    zoneThemes.append(el('p', 'vide', 'Les thèmes sont indisponibles (theme.json introuvable). Ouvre le site avec un serveur local.'));
+  } else {
+    const actuel = themeChoisi();
+    THEMES.themes.forEach(theme => {
+      const label = el('label', 'option');
+      const input = el('input');
+      input.type = 'radio';
+      input.name = 'theme';
+      input.value = theme.id;
+      input.checked = theme.id === actuel.id;
+
+      const texte = el('span', 'option__texte');
+      texte.append(el('span', null, theme.nom), el('span', 'option__desc', theme.description || ''));
+
+      const nuancier = el('span', 'nuancier');
+      nuancier.setAttribute('aria-hidden', 'true');
+      ['principal', 'principal-vif', 'teinte-moyenne', 'accent-clair'].forEach(cle => {
+        const nuance = el('span', 'nuance');
+        nuance.style.background = theme.couleurs[cle];
+        nuancier.append(nuance);
+      });
+
+      input.addEventListener('change', () => {
+        appliquerTheme(theme);
+        STORE.ecrire('theme', theme.id);
+        statut.textContent = 'Thème « ' + theme.nom + ' » appliqué.';
+      });
+
+      label.append(input, texte, nuancier);
+      zoneThemes.append(label);
+    });
+  }
+
   options('allergies', Object.keys(ALLERGENES), ALLERGENES, 'allergies');
   options('regimes', Object.keys(TAGS), TAGS, 'regimes');
 }
 
 /* ---------- Démarrage ---------- */
 
+/* Dernier thème utilisé, appliqué sans attendre */
+appliquerThemeEnCache();
+
 document.addEventListener('DOMContentLoaded', async () => {
   injecterIcones();
   const page = document.body.dataset.page;
+
+  /* Thème de couleurs : si theme.json est introuvable, les couleurs par défaut du CSS restent en place. */
+  try {
+    await chargerThemes();
+    appliquerTheme(themeChoisi());
+  } catch (e) {
+    THEMES = null;
+  }
 
   /* La page Profil n'a pas besoin des recettes : elle fonctionne même si le chargement échoue. */
   let pret = true;

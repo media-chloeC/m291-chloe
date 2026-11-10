@@ -1,0 +1,103 @@
+{
+  "defaut": "gourmande",
+  "variables": {
+    "texte": "--ink",
+    "surface": "--blanc",
+    "fond-sombre": "--g9",
+    "principal": "--g8",
+    "principal-vif": "--g7",
+    "teinte-claire": "--m1",
+    "teinte-moyenne": "--m3",
+    "accent-clair": "--c3",
+    "accent-fonce": "--c7",
+    "nav-inactif": "--nav-inactif",
+    "voile": "--voile"
+  },
+  "roles": {
+    "texte": "Texte courant sur fonds clairs (garder une couleur très foncée).",
+    "surface": "Fond des pages et texte posé sur les couleurs foncées (garder une couleur très claire).",
+    "fond-sombre": "Barre de navigation du bas et pastilles sombres.",
+    "principal": "En-tête, boutons, bordures, liens et icônes.",
+    "principal-vif": "Bandeau d’accueil, anneau de focus clavier et pastilles d’images.",
+    "teinte-claire": "Champs de saisie, blocs de la fiche recette, fonds discrets.",
+    "teinte-moyenne": "Cartes, collections et repère de la page active dans la navigation.",
+    "accent-clair": "Cartes et blocs d’accent chaud.",
+    "accent-fonce": "Visuels des recettes et messages d’erreur.",
+    "nav-inactif": "Texte et icônes des onglets inactifs sur le fond sombre.",
+    "voile": "Voile semi-transparent derrière les fenêtres de dialogue."
+  },
+  "themes": [
+    {
+      "id": "gourmande",
+      "nom": "Gourmande",
+      "description": "Vert profond et corail, le thème d’origine.",
+      "couleurs": {
+        "texte": "#111111",
+        "surface": "#FFFFFF",
+        "fond-sombre": "#04342C",
+        "principal": "#0B5240",
+        "principal-vif": "#0F6E56",
+        "teinte-claire": "#E1F5EE",
+        "teinte-moyenne": "#9FE1CB",
+        "accent-clair": "#F0997B",
+        "accent-fonce": "#B8421C",
+        "nav-inactif": "#C8EFE0",
+        "voile": "rgba(11, 82, 64, 0.55)"
+      }
+    },
+    {
+      "id": "chaleureuse",
+      "nom": "Chaleureuse",
+      "description": "Terracotta et ambre, des tons de four et d’épices.",
+      "couleurs": {
+        "texte": "#111111",
+        "surface": "#FFFFFF",
+        "fond-sombre": "#4A1B0C",
+        "principal": "#8A3317",
+        "principal-vif": "#A63A18",
+        "teinte-claire": "#FAECE7",
+        "teinte-moyenne": "#F5C4B3",
+        "accent-clair": "#FAC775",
+        "accent-fonce": "#854F0B",
+        "nav-inactif": "#F5C4B3",
+        "voile": "rgba(138, 51, 23, 0.55)"
+      }
+    },
+    {
+      "id": "ocean",
+      "nom": "Océan",
+      "description": "Bleu profond avec une touche d’orange.",
+      "couleurs": {
+        "texte": "#111111",
+        "surface": "#FFFFFF",
+        "fond-sombre": "#042C53",
+        "principal": "#0C447C",
+        "principal-vif": "#185FA5",
+        "teinte-claire": "#E6F1FB",
+        "teinte-moyenne": "#B5D4F4",
+        "accent-clair": "#FAC775",
+        "accent-fonce": "#854F0B",
+        "nav-inactif": "#B5D4F4",
+        "voile": "rgba(12, 68, 124, 0.55)"
+      }
+    },
+    {
+      "id": "prune",
+      "nom": "Prune",
+      "description": "Violet doux et rose, un style fruité.",
+      "couleurs": {
+        "texte": "#111111",
+        "surface": "#FFFFFF",
+        "fond-sombre": "#26215C",
+        "principal": "#3C3489",
+        "principal-vif": "#534AB7",
+        "teinte-claire": "#EEEDFE",
+        "teinte-moyenne": "#CECBF6",
+        "accent-clair": "#F4C0D1",
+        "accent-fonce": "#993556",
+        "nav-inactif": "#CECBF6",
+        "voile": "rgba(60, 52, 137, 0.55)"
+      }
+    }
+  ]
+}
