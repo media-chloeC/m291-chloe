@@ -163,13 +163,30 @@ summary:focus-visible {
 }
 
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--cible);
   margin: 0;
+  padding-right: 8px;
+  color: var(--blanc);
   font-size: 20px;
   font-weight: 700;
-  color: var(--blanc);
+  text-decoration: none;
+}
+
+.brand .ico svg {
+  width: 28px;
+  height: 28px;
+}
+
+.hd__actions {
+  display: flex;
+  gap: 4px;
 }
 
 .ib {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -180,9 +197,29 @@ summary:focus-visible {
   text-decoration: none;
 }
 
+/* Page courante dans l'en-tête : fond plus foncé et petit repère sous l'icône */
+.ib[aria-current="page"] {
+  background: var(--g9);
+}
+
+.ib[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  bottom: 4px;
+  left: 12px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--m3);
+}
+
 .mn {
   flex: 1;
   padding: 16px;
+}
+
+.mn > h1:not(.sr-only) {
+  margin: 0 0 12px;
 }
 
 /* ---------- Navigation du bas ---------- */
@@ -214,6 +251,27 @@ summary:focus-visible {
   border-top-color: var(--m3);
   color: var(--blanc);
   font-weight: 600;
+}
+
+/* Bouton « + » du pied de page : page d'ajout de recette */
+.nv a > .ico {
+  margin: 4px 0;
+}
+
+.nv__rond {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--m3);
+  color: var(--g9);
+}
+
+.nv__rond .ico svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5;
 }
 
 /* ---------- Éléments communs : pastilles, visuels ---------- */
@@ -935,6 +993,10 @@ dialog h2 {
   font-size: 14px;
 }
 
+.groupe > :not(legend) {
+  clear: both;
+}
+
 .groupe--menthe { background: var(--m3); }
 .groupe--corail { background: var(--c3); }
 
@@ -1011,6 +1073,173 @@ dialog h2 {
   height: 20px;
   border-radius: 50%;
   box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.35);
+}
+
+/* ---------- Ajout d'une recette ---------- */
+
+.champ--espace {
+  margin-top: 16px;
+}
+
+.erreurs {
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  border: 2px solid var(--c7);
+  border-radius: var(--rayon-m);
+  background: var(--blanc);
+  font-size: 14px;
+}
+
+.erreurs p {
+  color: var(--c7);
+  font-weight: 600;
+}
+
+.erreurs ul {
+  margin: 6px 0 0;
+  padding-left: 20px;
+}
+
+.erreurs a {
+  color: var(--c7);
+  font-weight: 600;
+}
+
+.visuel-ligne {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.visuel-apercu {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  overflow: hidden;
+  border: 3px solid var(--g8);
+  border-radius: var(--rayon-l);
+  background: var(--c7);
+  font-size: 48px;
+  line-height: 1;
+}
+
+.visuel-photo {
+  flex: 1;
+  min-width: 0;
+}
+
+.champ input[type="file"] {
+  min-height: var(--cible);
+  height: auto;
+  padding: 6px 8px;
+  background: var(--blanc);
+  font-size: 14px;
+}
+
+.champ input[type="file"]::file-selector-button {
+  min-height: 36px;
+  margin-right: 10px;
+  padding: 0 12px;
+  border: 2px solid var(--g8);
+  border-radius: 999px;
+  background: var(--blanc);
+  color: var(--g8);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.visuel-photo .btn-ligne {
+  margin-top: 8px;
+}
+
+.aide-groupe {
+  min-height: 20px;
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.sous-titre {
+  margin: 12px 0 8px;
+  font-weight: 600;
+}
+
+.saisies {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.saisie {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.saisie input,
+.saisie textarea {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  padding: 0 12px;
+  border: 2px solid var(--g7);
+  border-radius: var(--rayon-m);
+  background: var(--blanc);
+  color: var(--ink);
+  font: inherit;
+}
+
+.saisie input {
+  height: var(--cible);
+}
+
+.saisie textarea {
+  height: 72px;
+  padding: 10px 12px;
+  line-height: 1.4;
+  resize: none;
+}
+
+.champ [aria-invalid="true"],
+.saisie [aria-invalid="true"] {
+  border: 3px solid var(--c7);
+}
+
+.btn--plein {
+  width: 100%;
+  margin: 24px 0 8px;
+}
+
+.supprimer-recette {
+  margin-top: 8px;
+}
+
+/* ---------- Photos de recettes ---------- */
+
+.th,
+.mini,
+.card .im,
+.detail-hero__img,
+.visuel-apercu {
+  grid-template: 100% / 100%;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+}
+
+.mini,
+.th,
+.card .im,
+.detail-hero__img {
+  overflow: hidden;
 }
 
 /* ---------- Mouvement réduit ---------- */

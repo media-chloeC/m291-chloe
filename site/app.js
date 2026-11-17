@@ -75,7 +75,9 @@ const ICONES = {
   'folder-plus': '<path d="M12 19H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v3"/><path d="M16 19h6"/><path d="M19 16v6"/>',
   'plus': '<path d="M12 5v14M5 12h14"/>',
   'chevron-right': '<path d="m9 6 6 6-6 6"/>',
-  'x': '<path d="M18 6 6 18M6 6l12 12"/>'
+  'x': '<path d="M18 6 6 18M6 6l12 12"/>',
+  'logo': '<path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/>',
+  'book-marked': '<path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>'
 };
 
 /* ---------- Utilitaires ---------- */
@@ -92,7 +94,10 @@ const STORE = {
   ecrire(cle, valeur) {
     try {
       localStorage.setItem('yumnote:' + cle, JSON.stringify(valeur));
-    } catch (e) { /* stockage indisponible : on continue sans mémoriser */ }
+      return true;
+    } catch (e) {
+      return false; /* stockage plein ou indisponible */
+    }
   }
 };
 
@@ -264,6 +269,8 @@ function depuisJson(r) {
     titre: r.nom,
     emoji: r.icone,
     tags: (r.tags || []).map(slugTag).filter(t => TAGS[t]),
+    photo: r.photo || null,
+    perso: r.perso === true,
     temps: r.temps,
     description: r.description || '',
     ingredients: r.ingredients || [],
@@ -271,13 +278,22 @@ function depuisJson(r) {
   };
 }
 
+/* Recettes ajoutées depuis la page « Ajouter » (enregistrées dans le navigateur) */
+function lirePerso() {
+  const liste = STORE.lire('recettesPerso', []);
+  return Array.isArray(liste) ? liste.filter(r => r && r.id && r.nom) : [];
+}
+
 async function chargerRecettes() {
   const reponse = await fetch('recette.json');
   if (!reponse.ok) throw new Error('HTTP ' + reponse.status);
   const donnees = await reponse.json();
-  RECETTES = donnees
+  const duJson = donnees
     .filter(r => r.id !== undefined && r.nom)
     .map(depuisJson);
+  /* Les recettes ajoutées par l'utilisateur passent en premier, les plus récentes d'abord */
+  const perso = lirePerso().slice().reverse().map(depuisJson);
+  RECETTES = perso.concat(duJson);
   RECETTES.forEach(r => { r.allergenes = allergenesDe(r); });
 }
 
@@ -313,11 +329,22 @@ function etiquettes(recette) {
   return e;
 }
 
+function photoDe(recette) {
+  const img = el('img', 'photo');
+  img.src = recette.photo;
+  img.alt = '';
+  return img;
+}
+
 function visuel(recette, classe, decoratif) {
   const v = el('div', classe);
-  const e = el('span', null, recette.emoji);
-  e.setAttribute('aria-hidden', 'true');
-  v.append(e);
+  if (recette.photo) {
+    v.append(photoDe(recette));
+  } else {
+    const e = el('span', null, recette.emoji);
+    e.setAttribute('aria-hidden', 'true');
+    v.append(e);
+  }
   if (decoratif) {
     v.setAttribute('aria-hidden', 'true');
   } else {
@@ -489,7 +516,11 @@ function initRecette() {
 
   const image = document.getElementById('visuel');
   image.setAttribute('aria-label', 'Illustration : ' + recette.titre.toLowerCase());
-  document.getElementById('visuel-emoji').textContent = recette.emoji;
+  if (recette.photo) {
+    document.getElementById('visuel-emoji').replaceWith(photoDe(recette));
+  } else {
+    document.getElementById('visuel-emoji').textContent = recette.emoji;
+  }
 
   const infos = el('ul', 'infos');
   const temps = el('li');
@@ -500,7 +531,8 @@ function initRecette() {
   const chipNb = el('span', 'chip chip--corail');
   chipNb.append(icone('list'), pluriel(recette.ingredients.length, 'ingrédient'));
   nb.append(chipNb);
-  infos.append(temps, nb);
+  if (recette.temps) infos.append(temps);
+  infos.append(nb);
   recette.tags.forEach(t => {
     const li = el('li');
     li.append(pastille(t));
@@ -525,6 +557,30 @@ function initRecette() {
     blocIngredients,
     bloc('Préparation', etapes)
   );
+
+  /* Suppression (recettes ajoutées par l'utilisateur uniquement), en deux temps */
+  if (recette.perso) {
+    const supprimer = el('button', 'btn-ligne supprimer-recette', 'Supprimer cette recette');
+    supprimer.type = 'button';
+    let confirmation = false;
+    supprimer.addEventListener('click', () => {
+      if (!confirmation) {
+        confirmation = true;
+        supprimer.textContent = 'Confirmer la suppression';
+        document.getElementById('statut').textContent = 'Appuie encore pour supprimer définitivement cette recette.';
+        return;
+      }
+      STORE.ecrire('recettesPerso', lirePerso().filter(r => String(r.id) !== recette.id));
+      STORE.ecrire('favoris', STORE.lire('favoris', []).filter(id => id !== recette.id));
+      retirerDesCollections(recette.id);
+      location.href = 'index.html';
+    });
+    supprimer.addEventListener('blur', () => {
+      confirmation = false;
+      supprimer.textContent = 'Supprimer cette recette';
+    });
+    zone.append(supprimer);
+  }
 
   /* Favori */
   const bouton = document.getElementById('fav');
@@ -614,7 +670,11 @@ function initFavoris() {
     if (recettes.length) {
       const apercu = el('span', 'collection__apercu');
       apercu.setAttribute('aria-hidden', 'true');
-      recettes.slice(0, 4).forEach(r => apercu.append(el('span', 'mini', r.emoji)));
+      recettes.slice(0, 4).forEach(r => {
+        const mini = el('span', 'mini');
+        if (r.photo) mini.append(photoDe(r)); else mini.textContent = r.emoji;
+        apercu.append(mini);
+      });
       texte.append(apercu);
     }
     const chevron = icone('chevron-right');
@@ -778,6 +838,274 @@ function initFavoris() {
   rendre();
 }
 
+/* ---------- Ajout d'une recette ---------- */
+
+const ICONES_RECETTE = [
+  { emoji: '🍲', nom: 'Marmite' },
+  { emoji: '🥘', nom: 'Plat mijoté' },
+  { emoji: '🍝', nom: 'Pâtes' },
+  { emoji: '🍕', nom: 'Pizza' },
+  { emoji: '🥗', nom: 'Salade' },
+  { emoji: '🍰', nom: 'Gâteau' },
+  { emoji: '🥪', nom: 'Sandwich' },
+  { emoji: '🍜', nom: 'Nouilles' },
+  { emoji: '🥞', nom: 'Crêpes' },
+  { emoji: '🍣', nom: 'Sushi' },
+  { emoji: '🥧', nom: 'Tarte' },
+  { emoji: '🍪', nom: 'Biscuit' }
+];
+
+/* Réduit la photo (640 px max) pour qu'elle tienne dans le stockage du navigateur */
+function redimensionnerPhoto(fichier, cote) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(fichier);
+    const img = new Image();
+    img.onload = () => {
+      const ratio = Math.min(1, cote / Math.max(img.width, img.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.max(1, Math.round(img.width * ratio));
+      canvas.height = Math.max(1, Math.round(img.height * ratio));
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+      resolve(canvas.toDataURL('image/jpeg', 0.8));
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('image illisible'));
+    };
+    img.src = url;
+  });
+}
+
+function initAjouter() {
+  const formulaire = document.getElementById('form-recette');
+  const erreurs = document.getElementById('erreurs');
+  const apercu = document.getElementById('apercu');
+  const champPhoto = document.getElementById('photo');
+  const retirerPhoto = document.getElementById('retirer-photo');
+  const statutPhoto = document.getElementById('photo-statut');
+  const zoneIcones = document.getElementById('icones-recette');
+  const champNom = document.getElementById('nom');
+  const champDesc = document.getElementById('desc');
+  const champTemps = document.getElementById('temps');
+  const zoneRegimes = document.getElementById('regimes-recette');
+  const listeIngredients = document.getElementById('liste-ingredients');
+  const listeEtapes = document.getElementById('liste-etapes');
+
+  let iconeChoisie = ICONES_RECETTE[0].emoji;
+  let photo = null;
+
+  /* Aperçu : photo si elle existe, sinon l'icône choisie */
+  function majApercu() {
+    apercu.replaceChildren();
+    if (photo) {
+      const img = el('img', 'photo');
+      img.src = photo;
+      img.alt = '';
+      apercu.append(img);
+      apercu.setAttribute('aria-label', 'Aperçu : photo de la recette');
+    } else {
+      const s = el('span', null, iconeChoisie);
+      s.setAttribute('aria-hidden', 'true');
+      apercu.append(s);
+      apercu.setAttribute('aria-label', 'Aperçu : icône de la recette');
+    }
+    retirerPhoto.hidden = !photo;
+  }
+
+  ICONES_RECETTE.forEach((ic, i) => {
+    const label = el('label', 'icone');
+    const input = el('input');
+    input.type = 'radio';
+    input.name = 'icone-recette';
+    input.value = ic.emoji;
+    input.checked = i === 0;
+    input.setAttribute('aria-label', ic.nom);
+    const rond = el('span', 'icone__rond', ic.emoji);
+    rond.style.background = 'var(--m1)';
+    rond.setAttribute('aria-hidden', 'true');
+    label.append(input, rond);
+    zoneIcones.append(label);
+    input.addEventListener('change', () => {
+      iconeChoisie = ic.emoji;
+      if (photo) {
+        photo = null;
+        champPhoto.value = '';
+        statutPhoto.textContent = 'Photo retirée : l’icône choisie est utilisée.';
+      }
+      majApercu();
+    });
+  });
+
+  champPhoto.addEventListener('change', async () => {
+    const fichier = champPhoto.files && champPhoto.files[0];
+    if (!fichier) return;
+    if (!fichier.type.startsWith('image/')) {
+      statutPhoto.textContent = 'Erreur : ce fichier n’est pas une image.';
+      champPhoto.value = '';
+      return;
+    }
+    try {
+      photo = await redimensionnerPhoto(fichier, 640);
+      statutPhoto.textContent = 'Photo ajoutée.';
+      majApercu();
+    } catch (e) {
+      statutPhoto.textContent = 'Erreur : impossible de lire cette image.';
+      champPhoto.value = '';
+    }
+  });
+
+  retirerPhoto.addEventListener('click', () => {
+    photo = null;
+    champPhoto.value = '';
+    statutPhoto.textContent = 'Photo retirée.';
+    majApercu();
+    champPhoto.focus();
+  });
+
+  /* Régimes */
+  Object.keys(TAGS).forEach(cle => {
+    const label = el('label', 'option');
+    const input = el('input');
+    input.type = 'checkbox';
+    input.value = cle;
+    label.append(input, TAGS[cle].label);
+    zoneRegimes.append(label);
+  });
+
+  /* Listes d'ingrédients et d'étapes */
+  function renumeroter(zone, genre) {
+    const etape = genre === 'etape';
+    zone.querySelectorAll('.saisie').forEach((ligne, i) => {
+      ligne.firstChild.id = (etape ? 'etape-' : 'ingredient-') + (i + 1);
+      ligne.firstChild.setAttribute('aria-label', (etape ? 'Étape ' : 'Ingrédient ') + (i + 1));
+      ligne.lastChild.setAttribute('aria-label', 'Supprimer ' + (etape ? 'l’étape ' : 'l’ingrédient ') + (i + 1));
+    });
+  }
+
+  function ajouterLigne(zone, genre) {
+    const etape = genre === 'etape';
+    const ligne = el('div', 'saisie');
+    const champ = el(etape ? 'textarea' : 'input');
+    if (!etape) champ.type = 'text';
+    champ.maxLength = etape ? 300 : 100;
+
+    const retirer = el('button', 'btn-rond');
+    retirer.type = 'button';
+    retirer.append(icone('x'));
+    retirer.addEventListener('click', () => {
+      if (zone.children.length <= 1) {
+        champ.value = '';
+        champ.focus();
+        return;
+      }
+      const index = [...zone.children].indexOf(ligne);
+      ligne.remove();
+      renumeroter(zone, genre);
+      zone.children[Math.min(index, zone.children.length - 1)].firstChild.focus();
+    });
+
+    ligne.append(champ, retirer);
+    zone.append(ligne);
+    renumeroter(zone, genre);
+    return champ;
+  }
+
+  for (let i = 0; i < 3; i++) {
+    ajouterLigne(listeIngredients, 'ingredient');
+    ajouterLigne(listeEtapes, 'etape');
+  }
+
+  document.getElementById('ajout-ingredient').addEventListener('click', () => {
+    ajouterLigne(listeIngredients, 'ingredient').focus();
+  });
+  document.getElementById('ajout-etape').addEventListener('click', () => {
+    ajouterLigne(listeEtapes, 'etape').focus();
+  });
+
+  /* Messages d'erreur, avec un lien vers chaque champ à corriger */
+  function montrerErreurs(problemes) {
+    erreurs.replaceChildren();
+    erreurs.append(el('p', null, problemes.length > 1 ? 'Corrige les points suivants :' : 'Corrige le point suivant :'));
+    const ul = el('ul');
+    problemes.forEach(pb => {
+      const li = el('li');
+      if (pb.cible) {
+        pb.cible.setAttribute('aria-invalid', 'true');
+        const a = el('a', null, pb.texte);
+        a.href = '#' + pb.cible.id;
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          pb.cible.focus();
+        });
+        li.append(a);
+      } else {
+        li.textContent = pb.texte;
+      }
+      ul.append(li);
+    });
+    erreurs.append(ul);
+    erreurs.hidden = false;
+    erreurs.focus();
+  }
+
+  formulaire.addEventListener('input', e => {
+    if (e.target.hasAttribute('aria-invalid') && e.target.value.trim()) {
+      e.target.removeAttribute('aria-invalid');
+      if (!formulaire.querySelector('[aria-invalid]')) erreurs.hidden = true;
+    }
+  });
+
+  formulaire.addEventListener('submit', e => {
+    e.preventDefault();
+    formulaire.querySelectorAll('[aria-invalid]').forEach(n => n.removeAttribute('aria-invalid'));
+
+    const nom = champNom.value.trim();
+    const ingredients = [...listeIngredients.querySelectorAll('input')].map(i => i.value.trim()).filter(Boolean);
+    const etapes = [...listeEtapes.querySelectorAll('textarea')].map(i => i.value.trim()).filter(Boolean);
+    const dureeTexte = champTemps.value.trim();
+    const duree = dureeTexte ? parseInt(dureeTexte, 10) : 0;
+
+    const problemes = [];
+    if (!nom) problemes.push({ texte: 'Donne un nom à ta recette.', cible: champNom });
+    if (dureeTexte && !(duree >= 1 && duree <= 999)) {
+      problemes.push({ texte: 'Le temps doit être un nombre de minutes entre 1 et 999.', cible: champTemps });
+    }
+    if (!ingredients.length) {
+      problemes.push({ texte: 'Ajoute au moins un ingrédient.', cible: listeIngredients.querySelector('input') });
+    }
+    if (!etapes.length) {
+      problemes.push({ texte: 'Ajoute au moins une étape.', cible: listeEtapes.querySelector('textarea') });
+    }
+    if (problemes.length) {
+      montrerErreurs(problemes);
+      return;
+    }
+    erreurs.hidden = true;
+
+    const recette = {
+      id: 'p' + Date.now().toString(36),
+      nom: nom,
+      icone: iconeChoisie,
+      tags: [...zoneRegimes.querySelectorAll('input:checked')].map(i => i.value),
+      temps: duree || undefined,
+      description: champDesc.value.trim(),
+      ingredients: ingredients,
+      etapes: etapes,
+      perso: true
+    };
+    if (photo) recette.photo = photo;
+
+    if (!STORE.ecrire('recettesPerso', lirePerso().concat(recette))) {
+      montrerErreurs([{ texte: 'Impossible d’enregistrer : l’espace de stockage du navigateur est plein ou indisponible. Essaie sans photo.' }]);
+      return;
+    }
+    location.href = 'recette.html?id=' + encodeURIComponent(recette.id);
+  });
+
+  majApercu();
+}
+
 /* ---------- Profil ---------- */
 
 function initProfil() {
@@ -905,9 +1233,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     THEMES = null;
   }
 
-  /* La page Profil n'a pas besoin des recettes : elle fonctionne même si le chargement échoue. */
+  /* Les pages Profil et Ajouter n'ont pas besoin des recettes : elles fonctionnent même si le chargement échoue. */
   let pret = true;
-  if (page !== 'profil') {
+  if (page !== 'profil' && page !== 'ajouter') {
     try {
       await chargerRecettes();
       migrerAnciensIds();
@@ -922,7 +1250,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     recherche: initRecherche,
     recette: initRecette,
     favoris: initFavoris,
-    profil: initProfil
+    profil: initProfil,
+    ajouter: initAjouter
   };
   const init = pages[page];
   if (pret && init) init();

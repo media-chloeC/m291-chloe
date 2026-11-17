@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ajouter une recette — Yumnote</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-page="ajouter">
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <div class="app">
+    <header class="hd">
+      <a class="brand" href="index.html"><span data-icon="logo"></span>Yumnote</a>
+      <nav class="hd__actions" aria-label="Recherche et favoris">
+        <a class="ib" href="recherche.html" aria-label="Rechercher une recette"><span data-icon="search"></span></a>
+        <a class="ib" href="favoris.html" aria-label="Mes favoris"><span data-icon="book-marked"></span></a>
+      </nav>
+    </header>
+
+    <main id="contenu" class="mn">
+      <h1>Ajouter une recette</h1>
+      <p class="intro">Ta recette est enregistrée sur cet appareil et apparaît avec les autres.</p>
+      <noscript><p class="vide">Yumnote a besoin de JavaScript pour enregistrer une recette.</p></noscript>
+
+      <form id="form-recette" novalidate>
+        <div class="erreurs" id="erreurs" role="alert" tabindex="-1" hidden></div>
+
+        <fieldset class="groupe groupe--theme">
+          <legend>Icône ou photo</legend>
+          <div class="visuel-ligne">
+            <div class="visuel-apercu" id="apercu" role="img" aria-label="Aperçu de la recette"></div>
+            <div class="champ visuel-photo">
+              <label for="photo">Ajouter une photo</label>
+              <input id="photo" type="file" accept="image/*">
+              <button class="btn-ligne" id="retirer-photo" type="button" hidden>Retirer la photo</button>
+            </div>
+          </div>
+          <p class="aide-groupe" id="photo-statut" role="status"></p>
+          <p class="sous-titre" id="icones-titre">Ou choisis une icône</p>
+          <div class="icones" id="icones-recette" role="radiogroup" aria-labelledby="icones-titre"></div>
+        </fieldset>
+
+        <div class="champ champ--espace">
+          <label for="nom">Nom de la recette</label>
+          <input id="nom" type="text" maxlength="80" autocomplete="off" aria-required="true">
+        </div>
+
+        <div class="champ champ--espace">
+          <label for="desc">Description</label>
+          <textarea id="desc" maxlength="200"></textarea>
+        </div>
+
+        <div class="champ champ--espace">
+          <label for="temps">Temps de préparation, en minutes</label>
+          <input id="temps" type="number" min="1" max="999" inputmode="numeric">
+        </div>
+
+        <fieldset class="groupe groupe--corail">
+          <legend>Régimes alimentaires</legend>
+          <p class="aide">Coche ceux qui correspondent à la recette.</p>
+          <div class="options" id="regimes-recette"></div>
+        </fieldset>
+
+        <fieldset class="groupe groupe--menthe" id="groupe-ingredients">
+          <legend>Ingrédients</legend>
+          <p class="aide">Les allergènes sont repérés automatiquement à partir de cette liste.</p>
+          <div class="saisies" id="liste-ingredients"></div>
+          <button class="btn-ligne" id="ajout-ingredient" type="button"><span data-icon="plus"></span>Ajouter un ingrédient</button>
+        </fieldset>
+
+        <fieldset class="groupe groupe--theme" id="groupe-etapes">
+          <legend>Étapes</legend>
+          <div class="saisies" id="liste-etapes"></div>
+          <button class="btn-ligne" id="ajout-etape" type="button"><span data-icon="plus"></span>Ajouter une étape</button>
+        </fieldset>
+
+        <button class="btn btn--plein" type="submit">Enregistrer la recette</button>
+      </form>
+    </main>
+
+    <nav class="nv" aria-label="Navigation principale">
+      <a href="profil.html"><span data-icon="user"></span>Profil</a>
+      <a href="index.html"><span data-icon="home"></span>Accueil</a>
+      <a href="ajouter.html" aria-current="page"><span class="nv__rond"><span data-icon="plus"></span></span>Ajouter</a>
+    </nav>
+  </div>
+</body>
+</html>

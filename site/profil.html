@@ -12,10 +12,15 @@
 
   <div class="app">
     <header class="hd">
-      <h1 class="brand">Mon profil</h1>
+      <a class="brand" href="index.html"><span data-icon="logo"></span>Yumnote</a>
+      <nav class="hd__actions" aria-label="Recherche et favoris">
+        <a class="ib" href="recherche.html" aria-label="Rechercher une recette"><span data-icon="search"></span></a>
+        <a class="ib" href="favoris.html" aria-label="Mes favoris"><span data-icon="book-marked"></span></a>
+      </nav>
     </header>
 
     <main id="contenu" class="mn">
+      <h1>Mon profil</h1>
       <noscript><p class="vide">Yumnote a besoin de JavaScript pour enregistrer ton profil.</p></noscript>
 
       <div class="profil-haut">
@@ -64,7 +69,7 @@
     <nav class="nv" aria-label="Navigation principale">
       <a href="profil.html" aria-current="page"><span data-icon="user"></span>Profil</a>
       <a href="index.html"><span data-icon="home"></span>Accueil</a>
-      <a href="favoris.html"><span data-icon="bookmark"></span>Favoris</a>
+      <a href="ajouter.html"><span class="nv__rond"><span data-icon="plus"></span></span>Ajouter</a>
     </nav>
   </div>
 </body>
