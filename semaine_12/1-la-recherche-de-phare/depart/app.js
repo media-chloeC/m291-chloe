@@ -39,3 +39,27 @@ function afficherLieux(liste) {
 afficherLieux(tousLesLieux);
 
 // ----- Votre code de la semaine 12 commence ici -----
+
+function appliquerFiltres() {
+const texte = champRecherche.value.trim().toLowerCase();
+const resultats = tousLesLieux.filter(function (lieu) {
+const texteOk = lieu.nom.toLowerCase().includes(texte)
+|| lieu.quartier.toLowerCase().includes(texte);
+const ouvertOk = seulementOuverts === false || lieu.ouvert === true;
+return texteOk && ouvertOk;
+});
+afficherLieux(resultats);
+document.getElementById("aucun-resultat").hidden = resultats.length > 0;
+}
+
+const champRecherche = document.getElementById("recherche");
+const boutonOuvert = document.getElementById("filtre-ouvert");
+let seulementOuverts = false;
+boutonOuvert.addEventListener("click", function () {
+seulementOuverts = !seulementOuverts;
+boutonOuvert.setAttribute("aria-pressed", seulementOuverts);
+appliquerFiltres();
+});
+champRecherche.addEventListener("input", function () {
+appliquerFiltres();
+});
