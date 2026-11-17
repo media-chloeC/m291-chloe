@@ -92,10 +92,10 @@
         "principal": "#3C3489",
         "principal-vif": "#534AB7",
         "teinte-claire": "#EEEDFE",
-        "teinte-moyenne": "#F4B557",
-        "accent-clair": "#F2B5F8",
-        "accent-fonce": "#A129BC",
-        "nav-inactif": "#FCECFD",
+        "teinte-moyenne": "#CECBF6",
+        "accent-clair": "#F4C0D1",
+        "accent-fonce": "#993556",
+        "nav-inactif": "#CECBF6",
         "voile": "rgba(60, 52, 137, 0.55)"
       }
     }
